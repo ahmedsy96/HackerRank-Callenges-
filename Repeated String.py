@@ -15,11 +15,11 @@ import sys
 def repeatedString(s, n):
 
     d=list(s)
-    sayac =0
+    count =0
     for i in range(len(d)):
         if d[i] == 'a':
-            sayac+=1
-    k = int((n / len(d))) * sayac 
+            count+=1
+    k = int((n / len(d))) * count 
     if n % len(d) == 0 : 
         return(k)
     else : 
