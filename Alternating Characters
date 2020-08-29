@@ -1,0 +1,41 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the alternatingCharacters function below.
+def alternatingCharacters(s):
+    deletionNum = 0
+    listA = [0]*len(s)
+    listB = [0]*len(s)
+    for i in range(len(s)) : 
+        if s[i] == "A":
+            listA[i] = 1
+        else: 
+            listB[i] = 1
+    for j in range(len(listA) -1): 
+        if listA[j] != listB[j+1] : 
+            deletionNum+=1
+    print(listA)#debug
+    print(listB)#debug
+    return(deletionNum)
+
+
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    q = int(input())
+
+    for q_itr in range(q):
+        s = input()
+
+        result = alternatingCharacters(s)
+
+        fptr.write(str(result) + '\n')
+
+    fptr.close()
