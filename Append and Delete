@@ -1,0 +1,24 @@
+def appendAndDelete(s, t, k):
+    if len(s)+len(t)<k: 
+        return("Yes")
+    maxi = max(len(s),len(t))
+    mini = min(len(s),len(t))
+    
+    count = 0 
+    for i in range(mini): 
+        if t[i]==s[i]: 
+            count+=1 
+            if count==mini: 
+                if maxi-count>k: 
+                    return("No")
+                else:
+                    if ((k-(maxi-count))%2==0):
+                        return("Yes")
+                    else : return"No"
+        else : 
+            print(count)
+            if ((maxi-count)+(mini-count)>k):
+                return("No")
+            else : 
+                return("Yes")
+            break
