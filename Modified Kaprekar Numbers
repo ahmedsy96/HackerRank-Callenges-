@@ -1,0 +1,52 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'kaprekarNumbers' function below.
+#
+# The function accepts following parameters:
+#  1. INTEGER p
+#  2. INTEGER q
+#
+
+def kaprekarNumbers(p, q):
+    # Write your code here
+    listOfNumbers = []
+    for num in range(p,q+1):
+        numsq = num**2
+        #print(numsq)
+        if numsq >=10 : 
+            divide = len(str(numsq))//2
+            strnum = str(numsq)
+            r =int( strnum[divide:])
+            l = int(strnum[0:divide])
+            #print(strnum,r,l)
+            
+            if r+l==num:
+                listOfNumbers.append(num)
+        else:
+            if numsq==num:
+                listOfNumbers.append(num)
+    if len(listOfNumbers)==0:
+        print("INVALID RANGE")
+    else: 
+        
+        for i in listOfNumbers:
+            print(i , end = " ")
+             
+                
+                           
+            
+            
+
+if __name__ == '__main__':
+    p = int(input().strip())
+
+    q = int(input().strip())
+
+    kaprekarNumbers(p, q)
