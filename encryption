@@ -1,0 +1,61 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+#
+# Complete the 'encryption' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts STRING s as parameter.
+#
+
+def encryption(s):
+    # Write your code here
+    print(s)
+    s= s.replace(" ","")
+    counter =0
+    if int(math.sqrt(len(s)))==math.sqrt(len(s)):
+         
+        sq = int(math.sqrt(len(s)))  
+        sq1= sq
+    else:
+        sq = int(math.sqrt(len(s)))  
+        sq1= sq+1
+    
+    
+    if sq *(sq1) < len(s):
+        sq+=1
+    matris = [[None]*(sq1) for _ in range(sq)]
+    ss = ""
+    for i in range(sq):
+        for j in range(sq1):
+            if counter<len(s):
+                
+                matris[i][j]=s[counter]
+                
+                counter+=1
+    for i in range(sq1):
+        for j in range(sq):
+            if matris[j][i]!=None:
+                ss+=matris[j][i]
+        ss+=" "
+    
+    return(ss)
+  
+            
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = encryption(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
