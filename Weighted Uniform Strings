@@ -1,0 +1,66 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+import string 
+#
+# Complete the 'weightedUniformStrings' function below.
+#
+# The function is expected to return a STRING_ARRAY.
+# The function accepts following parameters:
+#  1. STRING s
+#  2. INTEGER_ARRAY queries
+#
+
+def weightedUniformStrings(s, queries):
+    # Write your code here
+    alphabet =[char for char in string.ascii_lowercase] 
+    #alphabet_index = [num for num in range(1,27)]
+    #dic = {}
+    nums=set()
+    answers=[]
+    prev_char = ''
+    wieght = 0
+    #[alphabet_index[alphabet.index()]]
+    
+    for i in s:
+         
+        if i == prev_char:
+            wieght +=alphabet.index(i)+1
+        else:
+            wieght=alphabet.index(i)+1
+            prev_char=i
+        nums.add(wieght)
+
+
+    for i in queries:
+        if i in nums :
+            answers.append("Yes")
+        else:
+            answers.append("No")
+    
+    return(answers)
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    queries_count = int(input().strip())
+
+    queries = []
+
+    for _ in range(queries_count):
+        queries_item = int(input().strip())
+        queries.append(queries_item)
+
+    result = weightedUniformStrings(s, queries)
+
+    fptr.write('\n'.join(result))
+    fptr.write('\n')
+
+    fptr.close()
