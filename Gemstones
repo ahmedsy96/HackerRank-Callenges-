@@ -1,0 +1,56 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+from collections import Counter
+#
+# Complete the 'gemstones' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts STRING_ARRAY arr as parameter.
+#
+
+def gemstones(arr):
+    # Write your code here
+    
+    mini = min(arr, key=len)
+    #counter = Counter(arr)
+    #mini_counter = counter[mini] 
+    arr.remove(mini)
+    uniq_list=list(set(mini))
+    print(uniq_list)
+    print(arr)
+    num = 0
+    for i in uniq_list:
+        inner_num = 0
+        for j in arr:
+            
+            if i in j:
+                inner_num+=1
+            
+        if inner_num==len(arr):
+            num+=1
+    
+    return(num)
+                
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    arr = []
+
+    for _ in range(n):
+        arr_item = input()
+        arr.append(arr_item)
+
+    result = gemstones(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
