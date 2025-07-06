@@ -1,0 +1,60 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+from itertools import combinations
+#
+# Complete the 'alternate' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts STRING s as parameter.
+#
+
+def alternate(s):
+    # Write your code here
+    maks=0
+    unique_chars = []
+    for c in s:
+        if c not in unique_chars:
+            unique_chars.append(c)
+
+    pairs = list(combinations(unique_chars, 2))
+    #print (pairs)
+    for a,b in pairs:
+        
+        temp = ""
+        maks_temp=0
+        for i in s:
+            if i==a or i==b:
+                if temp=="":
+                    
+                    temp+=i
+                    #print(temp)
+                    maks_temp+=1
+                else:
+                    if i==temp[-1]:
+                        maks_temp=0
+                        break
+                    else:
+                        temp+=i
+                        maks_temp+=1
+        maks=max(maks,maks_temp)
+    return(maks)
+                
+                    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    l = int(input().strip())
+
+    s = input()
+
+    result = alternate(s)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
